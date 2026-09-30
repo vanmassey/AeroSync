@@ -1,30 +1,27 @@
 ---
-title: Concepts
-description: >
-  What does your user need to understand about your project in order to use it -
-  or potentially contribute to it?
-weight: 4
+title: "Core Concepts"
+linkTitle: "Concepts"
+weight: 3
+description: "Understand the foundational architecture of AeroSync, including edge storage, dual-queue mechanics, and data resiliency."
 ---
 
-{{% pageinfo %}}
+# AeroSync Core Concepts
 
-This is a placeholder page that shows you how to use this template site.
+AeroSync is engineered from the ground up to solve a critical industrial problem: **unreliable network connectivity at the edge.** 
 
-{{% /pageinfo %}}
+Whether your nodes are deployed on remote wind turbines, maritime vessels, or factory floors with severe electrical interference, AeroSync guarantees that your critical telemetry data reaches your cloud analytics layer safely.
 
-For many projects, users may not need much information beyond the information in
-the [Overview](/docs/overview/), so this section is **optional**. However if
-there are areas where your users will need a more detailed understanding of a
-given term or feature in order to do anything useful with your project (or to
-not make mistakes when using it) put that information in this section. For
-example, you may want to add some conceptual pages if you have a large project
-with many components and a complex architecture.
+## The Three Pillars of AeroSync Resiliency
 
-Remember to focus on what the user needs to know, not just what you think is
-interesting about your project! If they don’t need to understand your original
-design decisions to use or contribute to the project, don’t put them in, or
-include your design docs in your repo and link to them. Similarly, most users
-will probably need to know more about how features work when in use rather than
-how they are implemented. Consider a separate architecture page for more
-detailed implementation and system design information that potential project
-contributors can consult.
+To ensure zero-loss data delivery without blowing out edge hardware costs, AeroSync relies on three distinct architectural concepts:
+
+### 1. Dual-Queue Pipeline Mechanics
+Every incoming sensor payload hits an ultra-fast, volatile in-memory queue. If network latency spikes or a total drop occurs, the pipeline instantly splits:
+* **High-Priority Data:** Critical alerts remain in memory to be retried instantly.
+* **Bulk Diagnostic Data:** Telemetry streams are immediately written to local disk space to clear system RAM.
+
+### 2. State Synchronization & Backpressure Control
+When the network link comes back online, the Edge Agent doesn't just flood your cloud servers with historical data. It uses built-in backpressure tokens to gently throttle older messages alongside real-time metrics. This prevents your cloud databases from hitting bottleneck errors.
+
+### 3. Hardware Root-of-Trust Security
+Data integrity is pointless without tamper-proofing. AeroSync authenticates edge nodes using local hardware cryptographic keys (like TPM 2.0 modules). This ensures payload data cannot be spoofed or intercepted during transmission over public cellular networks.
