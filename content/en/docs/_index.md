@@ -1,29 +1,36 @@
 ---
-title: Documentation
-linkTitle: Docs
-menu: { main: { weight: 20 } }
+title: "AeroSync Documentation Hub"
+linkTitle: "Documentation"
+weight: 1
+description: "The complete technical manual resource for the AeroSync Edge-to-Cloud industrial data pipeline framework."
 ---
 
-{{% pageinfo color="warning td-max-width-on-larger-screens mx-0" %}}
+# AeroSync Technical Documentation
 
-This is a placeholder page. Replace it with your own content.
+Welcome to the central knowledge repository for **AeroSync**, an enterprise-grade orchestration framework designed for continuous, resilient data streaming from the industrial edge to the cloud.
 
-{{% /pageinfo %}}
+Whether you are a field technician deploying an agent on a remote gateway, a software engineer writing custom telemetry parsers, or a systems architect planning an enterprise cloud data lake, this hub contains the resources you need.
 
-This section is where the user documentation for your project lives - all the
-information your users need to understand and successfully use your project.
+---
 
-For large documentation sets we recommend adding content under the headings in
-this section, though if some or all of them don’t apply to your project feel
-free to remove them or add your own. For a smaller example, see the
-[Docsy User Guide](https://docsy.dev/docs/), built from the
-[`docsy.dev`](https://github.com/google/docsy/tree/main/docsy.dev) directory of
-the Docsy monorepo.
+## Quick Navigation Matrix
 
-Other content such as marketing material, case studies, and community updates
-should live in the [About](/about/) and [Community](/community/) pages.
+Get started immediately by choosing the entry path that matches your current goal:
 
-Find out how to use the Docsy theme in the
-[Docsy User Guide](https://docsy.dev/docs/). You can learn more about how to
-organize your documentation (and how we organized this site) in
-[Organizing Your Content](https://docsy.dev/docs/best-practices/organizing-content/).
+| Section | Focus Area | Intended Audience |
+| :--- | :--- | :--- |
+| **[System Overview](./overview/)** | High-level ecosystem architecture and industrial hardware use cases. | Systems Engineers, CIOs, Architects |
+| **[Getting Started](./getting-started/)** | A 10-minute technical sandbox deployment guide using Docker container runtimes. | DevOps, Operations Technicians |
+| **[Core Concepts](./concepts/)** | Architectural deep dive into data drop handling, dual-queues, and TPM cryptography. | Core Developers, Security Teams |
+| **[Configuration Examples](./examples/)** | Production-ready YAML reference templates for mapping Modbus or MQTT sensor nodes. | Deployment Technicians, Field Crews |
+| **[Developer Guidelines](./contribution-guidelines/)** | Code quality requirements, repository lifecycles, and pull request submission steps. | Open Source Contributors, Plugin Writers |
+
+---
+
+## Platform Support & Lifecycle Status
+
+The AeroSync framework maintains strict backward compatibility for data schemas. The current system architecture supports the following operational environments out of the box:
+
+*   **Supported Input Buses:** Modbus TCP/RTU, OPC-UA, MQTT, Kafka, HTTP Webhooks.
+*   **Supported Cloud Ingestion Targets:** AWS IoT Core, Azure IoT Hub, Google Cloud Pub/Sub, custom REST endpoints.
+*   **Operating Footprint:** Minimal resource consumption (under 50MB RAM at idle), fully optimized for headless Linux gateways.
